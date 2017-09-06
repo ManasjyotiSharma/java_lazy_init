@@ -1,6 +1,6 @@
 # java_lazy_init
 
-Safely lazy initialize class members under multithreaded environment
+Safely lazy initialize java class members under multithreaded environment
 
 Here we explore a way to initialize class member variables under concurrent execution scenarios. If the needed information for initialization is available at object creation time; then the obvious way would be to do the initialization in the constructor of the class with the member being “private final”. However; at times the needed information for initialization is not available at object construction time or we might want to delay initialization of costly/complex objects in a lazy fashion i.e. until the member variable is really required for the current operation to be performed on the object. The tricky part under such a situation is that if the application is multithreaded (which anyways is the de facto scenario now a days) then we must make sure that the member is initialized once and only once and it be made visible to all participating threads. Common way to ensure that is by putting the initialization code under a synchronized block with the downside that for every access of the lazily initialized member variable we’d need to incur the cost of acquiring the lock with regards to the synchronized block. One way to minimize the locking impact is to do a double-checked locking technique which as we know is best avoided for its inherent unsafe nature as it’s tricky to get it right!
 
