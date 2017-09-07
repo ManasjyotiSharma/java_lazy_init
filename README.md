@@ -1,4 +1,4 @@
-# java_lazy_init
+# Java lazy initialization
 
 Safely lazy initialize java class members under multithreaded environment
 
