@@ -13,6 +13,7 @@ In my current project; I had come across quite a few places where lazy initializ
 In this regard, I came up with an “One Time Executor” semantic. In other words 
 -	A wrapper object which wraps a function F. In current context F is a function/lambda expression which holds the initialization code.
 -	The wrapper provides an execute method which behaves as
+
   o	Calls the function F the first time execute is called and caches the output of F.
   
   o	If 2 or more threads call execute concurrently, only one “gets in” and the others block till the one which “got in” is done.
