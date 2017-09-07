@@ -13,9 +13,12 @@ In my current project; I had come across quite a few places where lazy initializ
 In this regard, I came up with an “One Time Executor” semantic. In other words 
 -	A wrapper object which wraps a function F. In current context F is a function/lambda expression which holds the initialization code.
 -	The wrapper provides an execute method which behaves as
-o	Calls the function F the first time execute is called and caches the output of F.
-o	If 2 or more threads call execute concurrently, only one “gets in” and the others block till the one which “got in” is done.
-o	For all other/future invocations of execute, it does not call F rather simply returns the previously cached output.
+  o	Calls the function F the first time execute is called and caches the output of F.
+  
+  o	If 2 or more threads call execute concurrently, only one “gets in” and the others block till the one which “got in” is done.
+  
+  o	For all other/future invocations of execute, it does not call F rather simply returns the previously cached output.
+  
 -	The cached output can be safely accessed from outside of the initialization context.
 
 [Note: From above context and usage, it’s clear that the lazily initialized object must itself be thread safe since multiple threads would be accessing it concurrently.]
