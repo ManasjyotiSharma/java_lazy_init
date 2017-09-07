@@ -14,8 +14,8 @@ public class NonSingletonSampleB {
   private final OneTimeExecutor<File, PrintWriter> initializer = new OneTimeExecutor<>(
     (File configFile) -> {
       try { 
-        FileOutputStream fis = new FileOutputStream(configFile);
-        OutputStreamWriter osw = new OutputStreamWriter(fis, StandardCharsets.UTF_8);
+        FileOutputStream fos = new FileOutputStream(configFile);
+        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         BufferedWriter bw = new BufferedWriter(osw);
         PrintWriter pw = new PrintWriter(bw);
         return pw;
